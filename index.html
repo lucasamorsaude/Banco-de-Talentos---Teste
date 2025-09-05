@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AmorSaúde São João del-Rei - Trabalhe Conosco</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #61c1d0, #d73834);
+        }
+        .btn-primary {
+            background-color: #61c1d0;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #d73834;
+        }
+        .text-primary {
+            color: #61c1d0;
+        }
+        .text-secondary {
+            color: #d73834;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header atualizado com logo placeholder -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="logo.png" alt="Logo AmorSaúde" class="h-10 w-auto" />
+                <h1 class="text-2xl font-bold text-primary">São João del-Rei</h1>
+            </div>
+            <nav>
+                <a href="#historia" class="text-gray-700 hover:text-primary px-4">Nossa História</a>
+                <a href="forms_estagio.html" class="btn-primary mx-4">Trabalhe Conosco</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section (Ajustado: Aumentei o espaçamento entre imagem e texto) -->
+    <section class="hero-bg text-white py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center md:gap-12">
+            <!-- Imagem ocupando meia tela -->
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <div class="card-image">
+                    <img src="recepcao.png" alt="Vista panorâmica da charmosa cidade histórica de São João del-Rei em Minas Gerais, com igrejas coloniais, ruas de pedra e céu azul, simbolizando o coração acolhedor da AmorSaúde, com toques sutis de elementos médicos como estetoscópios e símbolos de cuidado" class="max-w-full h-auto rounded-lg shadow-lg" />
+                </div>
+            </div>
+            <!-- Texto com localização e chamada -->
+            <div class="md:w-1/2 text-center md:text-left">
+                <h2 class="text-4xl font-bold mb-4">AmorSaúde São João del-Rei</h2>
+                <p class="text-xl mb-4">Localizada atualmente próximo a UPA de São João del-Rei, Minas Gerais.</p>
+                <p class="mb-8">Uma empresa dedicada ao cuidado e à saúde, oferecendo um ambiente acolhedor e oportunidades de crescimento profissional.</p>
+                <a href="forms_estagio.html" class="btn-primary inline-block">Trabalhe Conosco</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Nossa História -->
+    <section id="historia" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8 text-primary">Nossa História</h2>
+            <p class="text-lg max-w-3xl mx-auto mb-8">
+                A AmorSaúde é dedicada ao cuidado e à promoção da saúde em São João del-Rei. Desde nossa fundação em 2022, trabalhamos para oferecer serviços de qualidade, apoiados pela comunidade local e pelo compromisso com valores éticos e humanos. Nosso time é formado por profissionais apaixonados, prontos para acolher e atender com amor e dedicação.
+            </p>
+            <div class="card-image">
+                <img src="https://placehold.co/800x400/61c1d0/d73834?text=Equipe+Colaborativa" alt="Imagem representativa da equipe da AmorSaúde sorrindo em um ambiente médico moderno, com profissionais diversos em uniformes, transmitindo confiança, empatia e espirito de equipe em São João del-Rei" class="max-w-full h-auto mx-auto rounded-lg shadow-lg" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Trabalhe Conosco -->
+    <section id="trabalhe" class="py-16 hero-bg text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8">Trabalhe Conosco</h2>
+            <p class="text-xl mb-8">Envie seu currículo e faça parte da nossa equipe dedicada à saúde e ao cuidado.</p>
+            <button class="btn-primary mx-4 mb-4">Enviar Currículo</button>
+            <button class="btn-secondary mx-4 mb-4 border-white border-2 text-white px-6 py-3 rounded-lg font-bold">Ver Vagas</button>
+            <div class="card-image mt-8">
+                <img src="https://placehold.co/600x300/ffffff/61c1d0?text=Portão+para+Oportunidades" alt="Ilustração abstrata de um portão aberto simbolizando novas oportunidades de carreira na área da saúde, com elementos de crescimento profissional, estetoscópios e corações para representar cuidado e acolhimento" class="max-w-full h-auto mx-auto rounded-lg shadow-lg" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 AmorSaúde São João del-Rei. Todos os direitos reservados.</p>
+            <p>Contate-nos: contato@amorsaude.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mantém o alerta para os botões primários
+        // document.querySelectorAll('.btn-primary').forEach(btn => {
+        //     btn.addEventListener('click', () => {
+        //         alert('Funcionalidade em breve! Entre em contato conosco.');
+        //     });
+        // });
+
+        // Redireciona para a página do formulário de estágio
+        document.querySelector('.btn-secondary').addEventListener('click', () => {
+            window.location.href = 'forms_estagio.html';
+        });
+    </script>
+</body>
+</html>

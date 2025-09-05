@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulário de Estágio | AmorSaúde</title>
+  <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fcfb;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+      color: #333;
+    }
+
+    .form-container {
+      background: #fff;
+      width: 100%;
+      max-width: 720px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      padding: 40px 48px 48px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin: 0 0 32px 0;
+      color: #61c1d0; /* azul da identidade */
+      text-align: center;
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 1.4rem;
+      margin: 40px 0 24px 0;
+      color: #61c1d0;
+      border-bottom: 2px solid #61c1d0;
+      padding-bottom: 8px;
+    }
+
+    form {
+      width: 100%;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      font-size: 1rem;
+      color: #444;
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="url"],
+    select,
+    textarea {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #222;
+      background: #fff;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      padding: 12px 16px;
+      width: 100%;
+      outline: none;
+      resize: vertical;
+      min-height: 40px;
+      transition: border-color 0.3s ease;
+      font-family: inherit;
+      box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.1);
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus,
+    input[type="tel"]:focus,
+    input[type="url"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #61c1d0;
+      box-shadow: 0 0 6px rgba(97, 193, 208, 0.5);
+    }
+
+    textarea {
+      min-height: 80px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    /* Radio group */
+    .radio-group {
+      display: flex;
+      gap: 24px;
+      margin-top: 8px;
+      align-items: center;
+    }
+
+    .radio-group input[type="radio"] {
+      accent-color: #61c1d0;
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+    }
+
+    .radio-group label {
+      font-weight: 500;
+      color: #444;
+      cursor: pointer;
+      user-select: none;
+      line-height: 20px;
+    }
+
+    /* Botão */
+    button {
+      margin-top: 40px;
+      background-color: #d73834; /* vermelho da identidade */
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding: 16px 0;
+      width: 100%;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(215, 56, 52, 0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    button:hover:not(:disabled) {
+      background-color: #b72b2a;
+      box-shadow: 0 8px 16px rgba(183, 43, 42, 0.6);
+    }
+
+    button:disabled {
+      background-color: #e6a19d;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    #status-message {
+      margin-top: 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      min-height: 1.2em;
+      user-select: none;
+      text-align: center;
+    }
+
+    #status-message.success {
+      color: #28a745;
+    }
+
+    #status-message.error {
+      color: #d93025;
+    }
+
+    /* Estilo para separar cada questão do questionário */
+    .question-card {
+      background: #f9fcfb;
+      border: 1.5px solid #61c1d0;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 6px rgb(97 193 208 / 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .question-card:hover {
+      box-shadow: 0 4px 12px rgb(97 193 208 / 0.2);
+    }
+
+    input:invalid, textarea:invalid, select:invalid {
+      border-color: #d93025;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 32px 24px 36px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      button {
+        font-size: 1.1rem;
+        padding: 14px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="form-container" role="main" aria-label="Formulário de candidatura para estágio na AmorSaúde">
+    <h1>Candidatura de Estágio</h1>
+    <form id="application-form" novalidate>
+      <h2>Dados Pessoais</h2>
+      <div class="form-group">
+        <label for="fullName">Nome Completo *</label>
+        <input type="text" id="fullName" name="fullName" required aria-required="true" autocomplete="name" />
+      </div>
+      <div class="form-group">
+        <label for="email">Endereço de e-mail *</label>
+        <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label for="age">Idade *</label>
+        <input type="number" id="age" name="age" min="14" max="100" required aria-required="true" />
+      </div>
+      <div class="form-group">
+        <label for="phone">Whatsapp *</label>
+        <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required aria-required="true" autocomplete="tel" />
+      </div>
+      <div class="form-group">
+        <label for="instagram">@ do Instagram</label>
+        <input type="text" id="instagram" name="instagram" placeholder="@seuusuario" autocomplete="username" />
+      </div>
+      <div class="form-group">
+        <label for="linkedin">LinkedIn</label>
+        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/seu-perfil" autocomplete="url" />
+      </div>
+      <div class="form-group">
+        <label for="neighborhood">Bairro onde mora *</label>
+        <input type="text" id="neighborhood" name="neighborhood" required aria-required="true" />
+      </div>
+
+      <h2>Formação</h2>
+      <div class="form-group">
+        <label for="course">Curso e previsão de formatura *</label>
+        <input type="text" id="course" name="course" placeholder="Ex: Administração, Dez/2026" required aria-required="true" />
+      </div>
+      <div class="form-group">
+        <label for="university">Instituição de ensino *</label>
+        <input type="text" id="university" name="university" required aria-required="true" />
+      </div>
+
+      <h2>Questionário</h2>
+
+      <div class="question-card">
+        <label>Você está disponível para início imediato? *</label>
+        <div class="radio-group" role="radiogroup" aria-required="true" aria-labelledby="immediate-availability-label">
+          <input type="radio" id="immediateYes" name="immediateAvailability" value="Sim" required />
+          <label for="immediateYes">Sim</label>
+          <input type="radio" id="immediateNo" name="immediateAvailability" value="Não" />
+          <label for="immediateNo">Não</label>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <label for="publicExperience">Você já teve alguma experiência com atendimento ao público (presencial, telefone ou digital)? Se sim, descreva brevemente.</label>
+        <textarea id="publicExperience" name="publicExperience" rows="3"></textarea>
+      </div>
+
+      <div class="question-card">
+        <label for="scheduleAvailability">Qual a sua disponibilidade de horários para estágio? *</label>
+        <textarea id="scheduleAvailability" name="scheduleAvailability" rows="3" required aria-required="true"></textarea>
+      </div>
+
+      <div class="question-card">
+        <label for="computerSkills">Você possui facilidade para trabalhar com computador, planilhas ou sistemas de atendimento?</label>
+        <textarea id="computerSkills" name="computerSkills" rows="3"></textarea>
+      </div>
+
+      <div class="question-card">
+        <label for="motivation">O que mais te motiva a trabalhar em uma clínica de saúde popular como a AmorSaúde?</label>
+        <textarea id="motivation" name="motivation" rows="3"></textarea>
+      </div>
+
+      <div class="question-card">
+        <label for="goodService">O que você considera essencial para oferecer um bom atendimento ao paciente?</label>
+        <textarea id="goodService" name="goodService" rows="3"></textarea>
+      </div>
+
+      <div class="question-card">
+        <label for="pressureSituation">Cite uma situação em que precisou lidar com pressão ou resolver um problema rápido. Como agiu?</label>
+        <textarea id="pressureSituation" name="pressureSituation" rows="3"></textarea>
+      </div>
+
+      <div class="question-card">
+        <label for="areaOfInterest">Qual área da saúde ou da administração mais te atrai para se desenvolver profissionalmente?</label>
+        <textarea id="areaOfInterest" name="areaOfInterest" rows="3"></textarea>
+      </div>
+
+      <div class="question-card">
+        <label for="careerPlans">Quais são seus planos de carreira para os próximos 2 anos?</label>
+        <textarea id="careerPlans" name="careerPlans" rows="3"></textarea>
+      </div>
+
+      <div class="question-card">
+        <label for="futureRole">Se contratado(a), em que tipo de função você gostaria de estar envolvido(a) dentro da AmorSaúde no futuro?</label>
+        <textarea id="futureRole" name="futureRole" rows="3"></textarea>
+      </div>
+
+      <div class="question-card">
+        <label for="growthMeaning">Para você, o que significa crescer junto com a empresa?</label>
+        <textarea id="growthMeaning" name="growthMeaning" rows="3"></textarea>
+      </div>
+
+      <div class="question-card">
+        <label for="keyQuality">Se tivesse que destacar uma qualidade sua que pode contribuir com a equipe de atendimento, qual seria?</label>
+        <textarea id="keyQuality" name="keyQuality" rows="3"></textarea>
+      </div>
+
+      <div class="question-card">
+        <label for="skillToDevelop">Qual é a principal competência que você gostaria de desenvolver aqui?</label>
+        <textarea id="skillToDevelop" name="skillToDevelop" rows="3"></textarea>
+      </div>
+
+      <div class="question-card">
+        <label for="source">Por onde você ficou sabendo dessa vaga?</label>
+        <input type="text" id="source" name="source" />
+      </div>
+
+      <button type="submit" id="submit-button">Enviar Candidatura</button>
+      <p id="status-message" role="alert" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById("application-form");
+    const statusMessage = document.getElementById("status-message");
+    const submitButton = document.getElementById("submit-button");
+    const appsScriptUrl = "https://script.google.com/macros/s/AKfycbyfz1_uVGn5zBPIudK5zX9FjLekpUxTRYwILqw8Hunkr7CLBxLxELA0X2363IMVVspu/exec";
+
+    // Máscara simples para telefone
+    const phoneInput = document.getElementById("phone");
+    phoneInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+        value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+        e.target.value = value.slice(0, 15);
+    });
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        statusMessage.textContent = "Por favor, preencha todos os campos obrigatórios (*).";
+        statusMessage.className = "error";
+        form.reportValidity();
+        return;
+      }
+
+      submitButton.disabled = true;
+      statusMessage.textContent = "Enviando...";
+      statusMessage.className = "";
+
+      fetch(appsScriptUrl, { method: "POST", body: new FormData(form) })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.result === "success") {
+            statusMessage.textContent =
+              "Candidatura enviada com sucesso! Agradecemos o seu interesse.";
+            statusMessage.className = "success";
+            form.reset();
+          } else {
+            statusMessage.textContent = "Erro ao enviar: " + data.message;
+            statusMessage.className = "error";
+          }
+          submitButton.disabled = false;
+        })
+        .catch((error) => {
+          statusMessage.textContent = "Erro de comunicação. Verifique o console.";
+          statusMessage.className = "error";
+          console.error("Error:", error);
+          submitButton.disabled = false;
+        });
+    });
+  </script>
+</body>
+</html>
